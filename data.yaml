@@ -1,0 +1,42 @@
+train: ../combined2/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: [ 'gun', 'heavy-weapon', 'knife' ]
+
+roboflow:
+  workspace: yolov7test-u13vc
+  project: weapon-detection-m7qso
+  version: 16
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/yolov7test-u13vc/weapon-detection-m7qso/dataset/16
+
+augmentations:
+  - type: RandomRain
+    p: 0.1
+    slant_lower: -10
+    slant_upper: 10
+    drop_length: 20
+    drop_width: 1
+    drop_color: [ 200, 200, 200 ]
+    blur_value: 5
+    brightness_coefficient: 0.9
+    rain_type: null
+  - type: Rotate
+    limit: 10
+    p: 0.5
+  - type: Blur
+    p: 0.1
+  - type: MotionBlur
+    p: 0.1
+  - type: ToGray
+    p: 0.01
+  - type: CLAHE
+    p: 0.01
+  - type: ImageCompression
+    quality_lower: 75
+    p: 0.0
+  - type: Normalize
+    mean: [ 0.485, 0.456, 0.406 ]
+    std: [ 0.229, 0.224, 0.225 ]

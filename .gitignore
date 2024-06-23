@@ -1,0 +1,11 @@
+combined/
+combined2/
+export/
+train/
+valid/
+.idea/
+weights/.DS_Store
+
+.DS_Store
+yolov8n.pt
+yolov8x.pt
